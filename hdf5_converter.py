@@ -36,9 +36,9 @@ class H5Converter:
         print("num_cols: " + str(num_cols))
         t=time.time()
         #Initialize hdf5 file
-        hdf = h5py.File(out_p,'a')
+        hdf = h5py.File(out_p,'a')        
         #Free up space for dataset
-        data = hdf.create_dataset('data',(num_rows,num_cols - transcriptSplit))
+        data = hdf.create_dataset('data',(num_rows,num_cols - transcriptSplit),chunks=(1000,1000))
         print("Create file and dataset: "+ str(time.time()-t))
         
         t=time.time()
